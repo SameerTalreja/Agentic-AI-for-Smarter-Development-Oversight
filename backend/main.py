@@ -5,8 +5,8 @@ FastAPI application entrypoint.
 
 from __future__ import annotations
 
-import sys
 import os
+import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -23,10 +23,15 @@ app = FastAPI(
     version="0.1.0",
 )
 
-# Allow the React dev server (and any origin during development) to call this API.
+# In production, set ALLOWED_ORIGINS to your deployed frontend URL(s),
+# comma-separated (e.g. "https://your-app.vercel.app"). Falls back to "*"
+# for local development so nothing breaks if it's unset.
+_origins_env = os.environ.get("ALLOWED_ORIGINS", "*")
+allowed_origins = ["*"] if _origins_env == "*" else [o.strip() for o in _origins_env.split(",")]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

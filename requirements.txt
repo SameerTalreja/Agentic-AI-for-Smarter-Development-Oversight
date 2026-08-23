@@ -1,0 +1,27 @@
+# Core
+fastapi
+uvicorn[standard]
+pydantic
+python-dotenv
+
+# Database
+sqlalchemy
+alembic
+
+# Data handling
+pandas
+openpyxl
+python-multipart
+
+# LLM / Agent
+openai
+google-generativeai
+
+# Document loading
+pypdf
+python-docx
+
+# Testing
+pytest
+pytest-asyncio
+httpx

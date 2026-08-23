@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Agentic Infra Analyst
 
 An AI-powered agentic system for querying, auditing, and reviewing infrastructure project data.
@@ -35,3 +36,7 @@ agentic-infra-analyst/
 ## License
 
 See [LICENSE](LICENSE).
+=======
+# Agentic-AI-for-Smarter-Development-Oversight
+Agentic AI-powered platform for BSDI project intelligence, auditing, monitoring, and transparent development decision support.
+>>>>>>> 5243bb1a3aa18fccf02e081e66dd2b8ab0c9ebca

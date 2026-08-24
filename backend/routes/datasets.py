@@ -19,7 +19,7 @@ from core.document_tools import ingest_document
 
 router = APIRouter(prefix="/api/datasets", tags=["datasets"])
 
-UPLOAD_DIR = os.path.join("data", "uploads")
+UPLOAD_DIR = os.environ.get("UPLOAD_DIR", "/tmp/uploads")
 ALLOWED_EXTENSIONS = {".csv", ".xlsx", ".xls", ".pdf", ".docx"}
 DOCUMENT_EXTENSIONS = {".pdf", ".docx"}
 

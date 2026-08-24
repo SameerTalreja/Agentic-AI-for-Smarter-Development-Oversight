@@ -20,7 +20,9 @@ from db.models import Dataset, DocumentChunk
 from core.document_loader import load_document
 
 _model: Optional[SentenceTransformer] = None
-
+import os
+os.environ.setdefault("HF_HOME", "/tmp/huggingface-cache")
+os.environ.setdefault("TRANSFORMERS_CACHE", "/tmp/huggingface-cache")
 
 def _get_model() -> SentenceTransformer:
     """Lazy-load the embedding model once per process (first call downloads

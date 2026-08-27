@@ -117,6 +117,13 @@ def call_llm(
     try:
         response = client.chat.completions.create(**kwargs)
         return response.choices[0].message
+    except TypeError as e:
+        if "reasoning_effort" in str(e):
+            # Installed groq SDK version doesn't support this param -- retry without it.
+            kwargs.pop("reasoning_effort", None)
+            response = client.chat.completions.create(**kwargs)
+            return response.choices[0].message
+        raise
     except RateLimitError as e:
         error_str = str(e)
         if "tokens per day" in error_str.lower() or "TPD" in error_str:
